@@ -20,11 +20,12 @@
         );
       }
 
-      function ChatMessage(probs) {
-        const message = probs.message;
-       const Sender = probs.Sender;
+      function ChatMessage({message, Sender}) {
+      //   const message = probs.message;
+      //  const Sender = probs.Sender;
+          // const {message, Sender}  = probs;
 
-       if ((Sender === "robot")) {
+     if ((Sender === "robot")) {
           return (
             <div>
               <img src="robot.png" width="50" />
@@ -34,6 +35,7 @@
        }
         return (
           <div>
+            
             {message}
             <img src="user.png" width="50" />
           </div>
