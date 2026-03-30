@@ -25,19 +25,19 @@
       //  const Sender = probs.Sender;
           // const {message, Sender}  = probs;
 
-     if ((Sender === "robot")) {
+   /*    if ((Sender === "robot")) {
           return (
             <div>
               <img src="robot.png" width="50" />
               {message}
             </div>
           ); 
-       }
+       }*/
         return (
           <div>
-            
+          { Sender === 'robot' && <img src="robot.png" width="50" />}
             {message}
-            <img src="user.png" width="50" />
+            { Sender === 'user' && <img src="user.png" width="50" />}
           </div>
         );
       }
@@ -46,7 +46,7 @@
           <ChatInput />
           <ChatMessage message="hello" Sender='user'/>
           <ChatMessage message="Hello! How can I help you?" Sender="robot" />
-          <ChatMessage message="todays date" sender='user'/>
+          <ChatMessage message="todays date" Sender='user'/>
           <ChatMessage message="Today is March 28" Sender="robot" />
           <ChatMessage message="flip a coin" Sender='user'/>
           <ChatMessage message="Sure! You got heads" Sender="robot" />
