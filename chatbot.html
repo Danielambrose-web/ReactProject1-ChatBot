@@ -46,31 +46,37 @@
           {
             message: "hello chatbot",
             Sender: "user",
+            id: 'as1'
           },
           {
             message: "Hello! How can I help you?",
             Sender: "robot",
+            id: 'as2'
           },
           {
             message: "todays date",
             Sender: "user",
+            id: 'as3'
           },
           {
             message: "Today is March 28",
             Sender: "robot",
+            id: 'as4'
           },
           {
             message: "flip a coin",
             Sender: "user",
+            id: 'as5'
           },
         ];
 
-       const chatMessageComponent = dataMessages.map((dataMessage) => {
+        const chatMessageComponent = dataMessages.map((dataMessage) => {
           return (
             <>
               <ChatMessage
                 message={dataMessage.message}
                 Sender={dataMessage.Sender}
+                key={dataMessage.id}
               />
             </>
           );
@@ -79,15 +85,14 @@
         return (
           <>
             <ChatInput />
-   
+
             {chatMessageComponent}
-    
           </>
         );
       }
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(<App/>);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
