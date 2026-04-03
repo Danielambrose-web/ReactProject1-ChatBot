@@ -15,17 +15,17 @@
         return (
           <>
             <input placeholder="send message" size="50" />
-           <button>Send</button>
+            <button>Send</button>
           </>
         );
       }
 
-      function ChatMessage({message, Sender}) {
-      //   const message = probs.message;
-      //  const Sender = probs.Sender;
-          // const {message, Sender}  = probs;
+      function ChatMessage({ message, Sender }) {
+        //   const message = probs.message;
+        //  const Sender = probs.Sender;
+        // const {message, Sender}  = probs;
 
-   /*    if ((Sender === "robot")) {
+        /*    if ((Sender === "robot")) {
           return (
             <div>
               <img src="robot.png" width="50" />
@@ -35,69 +35,59 @@
        }*/
         return (
           <div>
-          { Sender === 'robot' && <img src="robot.png" width="50" />}
+            {Sender === "robot" && <img src="robot.png" width="50" />}
             {message}
-            { Sender === 'user' && <img src="user.png" width="50" />}
+            {Sender === "user" && <img src="user.png" width="50" />}
           </div>
         );
       }
-      function App(){
-const messages =[
-  {
-    message : 'hello chatbot',
-    Sender :'user'
-  },
-    {
-    message : 'Hello! How can I help you?',
-    Sender :'robot'
-  },
-    {
-    message : 'todays date',
-    Sender :'user'
-  },
-    {
-    message : 'Today is March 28',
-    Sender :'robot'
-  },  {
-    message : 'flip a coin',
-    Sender :'user'
-  }
-];
- 
-         return  (
-        <>
-          <ChatInput />
-          <ChatMessage
-           message="hello" 
-           Sender='user'
-           />
-          <ChatMessage
-           message="Hello! How can I help you?"
-            Sender="robot" 
-            />
-          <ChatMessage 
-          message="todays date"
-           Sender='user'
-           />
-          <ChatMessage 
-          message="Today is March 28" 
-          Sender="robot" />
-          <ChatMessage
-           message="flip a coin"
-           Sender='user'
-           />
-          <ChatMessage 
-          message="Sure! You got heads" 
-          Sender="robot"
-           />
-        </>
-      ); 
+      function App() {
+        const messages = [
+          {
+            message: "hello chatbot",
+            Sender: "user",
+          },
+          {
+            message: "Hello! How can I help you?",
+            Sender: "robot",
+          },
+          {
+            message: "todays date",
+            Sender: "user",
+          },
+          {
+            message: "Today is March 28",
+            Sender: "robot",
+          },
+          {
+            message: "flip a coin",
+            Sender: "user",
+          },
+        ];
 
+       const chatMessageComponent = ChatMessage.map((chatmessage) => {
+          return (
+            <>
+              <ChatMessage
+                message={chatmessage.message}
+                Sender={chatmessage.Sender}
+              />
+            </>
+          );
+        });
+
+        return (
+          <>
+            <ChatInput />
+   
+            {chatMessageComponent}
+    
+          </>
+        );
       }
-     
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(<App/>);
+      ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
