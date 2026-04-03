@@ -29,7 +29,7 @@
           return (
             <div>
               <img src="robot.png" width="50" />
-              {message}
+              {message }
             </div>
           ); 
        }*/
@@ -41,20 +41,63 @@
           </div>
         );
       }
-      const app = (
+      function App(){
+const messages =[
+  {
+    message : 'hello chatbot',
+    Sender :'user'
+  },
+    {
+    message : 'Hello! How can I help you?',
+    Sender :'robot'
+  },
+    {
+    message : 'todays date',
+    Sender :'user'
+  },
+    {
+    message : 'Today is March 28',
+    Sender :'robot'
+  },  {
+    message : 'flip a coin',
+    Sender :'user'
+  }
+];
+ 
+         return  (
         <>
           <ChatInput />
-          <ChatMessage message="hello" Sender='user'/>
-          <ChatMessage message="Hello! How can I help you?" Sender="robot" />
-          <ChatMessage message="todays date" Sender='user'/>
-          <ChatMessage message="Today is March 28" Sender="robot" />
-          <ChatMessage message="flip a coin" Sender='user'/>
-          <ChatMessage message="Sure! You got heads" Sender="robot" />
+          <ChatMessage
+           message="hello" 
+           Sender='user'
+           />
+          <ChatMessage
+           message="Hello! How can I help you?"
+            Sender="robot" 
+            />
+          <ChatMessage 
+          message="todays date"
+           Sender='user'
+           />
+          <ChatMessage 
+          message="Today is March 28" 
+          Sender="robot" />
+          <ChatMessage
+           message="flip a coin"
+           Sender='user'
+           />
+          <ChatMessage 
+          message="Sure! You got heads" 
+          Sender="robot"
+           />
         </>
-      );
+      ); 
+
+      }
+     
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(app);
+      ReactDOM.createRoot(container).render(<App/>);
     </script>
   </body>
 </html>
