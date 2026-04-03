@@ -42,7 +42,7 @@
         );
       }
       function App() {
-        const messages = [
+        const dataMessages = [
           {
             message: "hello chatbot",
             Sender: "user",
@@ -65,12 +65,12 @@
           },
         ];
 
-       const chatMessageComponent = ChatMessage.map((chatmessage) => {
+       const chatMessageComponent = dataMessages.map((dataMessage) => {
           return (
             <>
               <ChatMessage
-                message={chatmessage.message}
-                Sender={chatmessage.Sender}
+                message={dataMessage.message}
+                Sender={dataMessage.Sender}
               />
             </>
           );
@@ -87,7 +87,7 @@
       }
 
       const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(<App />);
+      ReactDOM.createRoot(container).render(<App/>);
     </script>
   </body>
 </html>
