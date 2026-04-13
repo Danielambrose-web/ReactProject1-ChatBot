@@ -21,18 +21,6 @@
       }
 
       function ChatMessage({ message, Sender }) {
-        //   const message = probs.message;
-        //  const Sender = probs.Sender;
-        // const {message, Sender}  = probs;
-
-        /*    if ((Sender === "robot")) {
-          return (
-            <div>
-              <img src="robot.png" width="50" />
-              {message }
-            </div>
-          ); 
-       }*/
         return (
           <div>
             {Sender === "robot" && <img src="robot.png" width="50" />}
@@ -41,52 +29,55 @@
           </div>
         );
       }
-      function App() {
+      function ChatMessages() {
         const dataMessages = [
           {
             message: "hello chatbot",
             Sender: "user",
-            id: 'as1'
+            id: "as1",
           },
           {
             message: "Hello! How can I help you?",
             Sender: "robot",
-            id: 'as2'
+            id: "as2",
           },
           {
             message: "todays date",
             Sender: "user",
-            id: 'as3'
+            id: "as3",
           },
           {
             message: "Today is March 28",
             Sender: "robot",
-            id: 'as4'
+            id: "as4",
           },
           {
             message: "flip a coin",
             Sender: "user",
-            id: 'as5'
+            id: "as5",
           },
         ];
 
-        const chatMessageComponent = dataMessages.map((dataMessage) => {
+        return (
+          <>
+         {dataMessages.map((dataMessage) => {
           return (
-            <>
               <ChatMessage
                 message={dataMessage.message}
                 Sender={dataMessage.Sender}
                 key={dataMessage.id}
               />
-            </>
           );
-        });
-
+        })};
+        </> 
+      )
+      }
+      
+      function App() {
         return (
           <>
             <ChatInput />
-
-            {chatMessageComponent}
+            <ChatMessages/>
           </>
         );
       }
