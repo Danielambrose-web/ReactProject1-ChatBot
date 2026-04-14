@@ -1,6 +1,8 @@
 import RobotImg from "../public/robot.png";
+import UserImg from "../public/user.png";
 
 function ChatMessage({ message, Sender }) {
+
   return (
     <>
       {/* {Sender === "robot" && <img src="robot.png" width="50" />}
@@ -26,7 +28,7 @@ function ChatMessage({ message, Sender }) {
         <img src={RobotImg} width="50" />
       </div>
 
-      
+
     </>
   );
 }
