@@ -1,12 +1,34 @@
+import RobotImg from "../public/robot.png";
 
-
-function App() {
+function ChatMessage({ message, Sender }) {
   return (
-    <div style={{ color: "black" }}>
-      <h1>Chatbot App</h1>
-    </div>
+    <>
+      {/* {Sender === "robot" && <img src="robot.png" width="50" />}
+      {message}
+      {Sender === "user" && <img src="user.png" width="50" />}
+      {/* <img src={RobotImg}/> */}
+
+      <div>
+        <img src={RobotImg} width="50" />
+        hello
+      </div>
+
+      <div>
+        hello
+        <img src={RobotImg} width="50" />
+      </div>
+      <div>
+        <img src={RobotImg} width="50" />
+        time
+      </div>
+      <div>
+        it is 1030pm
+        <img src={RobotImg} width="50" />
+      </div>
+
+      
+    </>
   );
 }
 
-
-export default App
+export default ChatMessage;
