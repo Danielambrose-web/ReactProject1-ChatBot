@@ -1,15 +1,17 @@
 import RobotImg from "../public/robot.png";
-import UserImg from "../public/user.png";
+import UserImg from "./assets/user.png";
 
-function ChatMessage({ message, Sender }) {
+function ChatMessage({ message, sender }) {
+
+
 
   return (
-    <>
-      {/* {Sender === "robot" && <img src="robot.png" width="50" />}
+    <div>
+      {sender === "robot" && <img src={RobotImg} width="50" />}
       {message}
-      {Sender === "user" && <img src="user.png" width="50" />}
-      {/* <img src={RobotImg}/> */}
-
+      {sender === "user" && <img src={UserImg} width="50" />}
+      
+{/* 
       <div>
         <img src={RobotImg} width="50" />
         hello
@@ -20,16 +22,16 @@ function ChatMessage({ message, Sender }) {
         <img src={RobotImg} width="50" />
       </div>
       <div>
-        <img src={RobotImg} width="50" />
+        <img src={UserImg} width="50" />
         time
       </div>
       <div>
         it is 1030pm
         <img src={RobotImg} width="50" />
-      </div>
+      </div> */}
 
 
-    </>
+    </div>
   );
 }
 
