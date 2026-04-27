@@ -1,13 +1,16 @@
-
-import App from "../App.jsx";
-import ChatMessage from "./ChatMessage"; 
-
+import React from "react";
+import ChatMessage from "./ChatMessage";
+// import {ChatMessage} from './ChatMessage';
 
 function ChatData({ Messages }) {
   return (
-    <div>
+    <div className="chat-container">
       {Messages.map((msg) => (
-        <ChatMessage key={msg.key} sender={msg.sender} message={msg.message} />
+        <ChatMessage
+          key={msg.key}
+          message={msg.message}
+          sender={msg.sender}
+        />
       ))}
     </div>
   );
