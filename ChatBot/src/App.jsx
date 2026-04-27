@@ -13,20 +13,10 @@ function App() {
     { message: "it is an assistant", sender: "robot", key: "mes6" },
   ]);
 
-  function sendMessage(inputText) {
-    const newMessage = {
-      message: inputText,
-      sender: "user",
-      key: crypto.randomUUID(),
-    };
-
-    setMessages([...Messages, newMessage]);
-  }
-
   return (
     <div className="app-container">
-      <ChatInput sendMessage={sendMessage} />
-      <ChatData Messages={Messages} />
+  <ChatData Messages={Messages} />
+<ChatInput Messages={Messages} setMessages={setMessages} />
     </div>
   );
 }
