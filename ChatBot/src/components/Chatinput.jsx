@@ -10,16 +10,18 @@ function ChatInput({ Messages, setMessages }) {
   }
 
   function sendMessage() {
-const newMessage = [
-  ...ChatMessage,{
-    Messages: inputText,
-    sender: 'user',
-    id : crypto.randomUUID()
-  }
+    const newMessage = [
+      ...Messages,
+      {
+        message: inputText,
+        sender: "user",
+        id: crypto.randomUUID(),
+      },
+    ];
 
-];
-
-setMessages(newMessage)
+    setMessages(newMessage);
+    setInputText("");
+    console.log(inputText);
   }
 
   return (
