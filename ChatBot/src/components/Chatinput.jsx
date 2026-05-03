@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Chatinput.css";
-import ChatMessage from "./ChatMessage";
+import { getBotResponse } from "./Chatbot";
 
-function ChatInput({ Messages, setMessages }) {
+function ChatInput({ setMessages }) {
   const [inputText, setInputText] = useState("");
 
   function saveTextInput(e) {
@@ -10,19 +10,55 @@ function ChatInput({ Messages, setMessages }) {
   }
 
   function sendMessage() {
-    const newMessage = [
-      ...Messages,
-      {
-        message: inputText,
-        sender: "user",
-        id: crypto.randomUUID(),
-      },
-    ];
+    if (!inputText.trim()) {
+      return;
+    }
 
-    setMessages(newMessage);
+    const userMessage = {
+      message: inputText,
+      sender: "user",
+      key: crypto.randomUUID(),
+    };
+
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInputText("");
-    console.log(inputText);
-  }
+
+    const botText = getBotResponse(inputText);
+    console.log("Bot response:", botText);
+
+    const botMessage = {
+      message: botText,
+      sender: "robot",
+      key: crypto.randomUUID(),
+    };
+
+    setMessages((prevMessages) => [...prevMessages, botMessage]);
+ function sendMessage() {
+  if (!inputText.trim()) return;
+
+  const userText = inputText; // store before clearing
+
+  const userMessage = {
+    message: userText,
+    sender: "user",
+    key: crypto.randomUUID(),
+  };
+
+  setMessages((prev) => [...prev, userMessage]);
+  setInputText("");
+
+  // get bot response
+  const botText = getBotResponse(userText);
+  console.log("Bot response:", botText);
+
+  const botMessage = {
+    message: botText,
+    sender: "robot",
+    key: crypto.randomUUID(),
+  };
+
+  setMessages((prev) => [...prev, botMessage]);
+}
 
   return (
     <div className="chat-input-container">

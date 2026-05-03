@@ -15,8 +15,8 @@ function App() {
 
   return (
     <div className="app-container">
-  <ChatData Messages={Messages} />
-<ChatInput Messages={Messages} setMessages={setMessages} />
+      <ChatData Messages={Messages} />
+      <ChatInput setMessages={setMessages} />
     </div>
   );
 }
