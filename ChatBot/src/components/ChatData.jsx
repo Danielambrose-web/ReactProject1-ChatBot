@@ -2,14 +2,16 @@ import React from "react";
 import ChatMessage from "./ChatMessage";
 // import {ChatMessage} from './ChatMessage';
 
-function ChatData({ Messages }) {
+function ChatData({ messageChats }) {
+
+
   return (
     <div className="chat-container">
-      {Messages.map((msg) => (
+      {messageChats.map((messageChat) => (
         <ChatMessage
-          key={msg.key}
-          message={msg.message}
-          sender={msg.sender}
+          messageChats={messageChat.message}
+          sender={messageChat.sender}
+          key={messageChat.id}
         />
       ))}
     </div>
