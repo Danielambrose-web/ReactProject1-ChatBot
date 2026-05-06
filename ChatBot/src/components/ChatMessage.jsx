@@ -2,7 +2,7 @@
     import UserImg from "../assets/user.png";
     import './ChatMessage.css'
 
-    function ChatMessage({ message, sender }) {
+    function ChatMessage({ messageChats, sender }) {
 
       return (
     <div className={
@@ -14,7 +14,7 @@
         <img src={RobotImg} className="chat-message-profile" />
       )}
       <div className="chat-message-text">
-        {message}
+        {messageChats}
       </div>
       {sender === 'user' && (
         <img src={UserImg} className="chat-message-profile" />
