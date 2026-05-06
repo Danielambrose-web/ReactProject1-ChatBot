@@ -4,19 +4,34 @@ import ChatInput from "./components/ChatInput";
 import "./App.css";
 
 function App() {
-  const [Messages, setMessages] = useState([
-    { message: "hi", sender: "user", key: "mes1" },
-    { message: "hi", sender: "robot", key: "mes2" },
-    { message: "what is todays date", sender: "user", key: "mes3" },
-    { message: "date is april", sender: "robot", key: "mes4" },
-    { message: "wow what is ai", sender: "user", key: "mes5" },
-    { message: "it is an assistant", sender: "robot", key: "mes6" },
+  const [messageChats, setMessages] = useState([
+    {
+      message: "hello chatbot",
+      sender: "user",
+      id: "id1",
+    },
+    {
+      message: "Hello! How can I help you?",
+      sender: "robot",
+      id: "id2",
+    },
+    {
+      message: "can you get me todays date?",
+      sender: "user",
+      id: "id3",
+    },
+    {
+      message: "Today is September 27",
+      sender: "robot",
+      id: "id4",
+    },
   ]);
 
   return (
     <div className="app-container">
-      <ChatData Messages={Messages} />
-      <ChatInput setMessages={setMessages} />
+      <ChatData messageChats={messageChats} />
+      <ChatInput messageChats={messageChats} 
+      setMessages={setMessages} />
     </div>
   );
 }
