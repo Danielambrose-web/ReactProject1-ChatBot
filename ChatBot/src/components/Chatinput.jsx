@@ -2,63 +2,36 @@ import React, { useState } from "react";
 import "./Chatinput.css";
 import { getBotResponse } from "./Chatbot";
 
-function ChatInput({ setMessages }) {
+function ChatInput({ messageChats, setMessages }) {
   const [inputText, setInputText] = useState("");
 
-  function saveTextInput(e) {
+  function saveInputText(e) {
     setInputText(e.target.value);
   }
-
   function sendMessage() {
-    if (!inputText.trim()) {
-      return;
-    }
+    const newMessages = [
+      ...messageChats,
+      {
+        messageChats: inputText,
+        sender: "user",
+        id: crypto.randomUUID(),
+      },
+    ];
 
-    const userMessage = {
-      message: inputText,
-      sender: "user",
-      key: crypto.randomUUID(),
-    };
+    setMessages(newMessages);
 
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    const response = getBotResponse.getResponse(inputText);
+    setMessages([
+      ...newMessages,
+      {
+       messageChats: response,
+        sender: "robot",
+        id: crypto.randomUUID(),
+      },
+    ]);
+
     setInputText("");
-
-    const botText = getBotResponse(inputText);
-    console.log("Bot response:", botText);
-
-    const botMessage = {
-      message: botText,
-      sender: "robot",
-      key: crypto.randomUUID(),
-    };
-
-    setMessages((prevMessages) => [...prevMessages, botMessage]);
- function sendMessage() {
-  if (!inputText.trim()) return;
-
-  const userText = inputText; // store before clearing
-
-  const userMessage = {
-    message: userText,
-    sender: "user",
-    key: crypto.randomUUID(),
-  };
-
-  setMessages((prev) => [...prev, userMessage]);
-  setInputText("");
-
-  // get bot response
-  const botText = getBotResponse(userText);
-  console.log("Bot response:", botText);
-
-  const botMessage = {
-    message: botText,
-    sender: "robot",
-    key: crypto.randomUUID(),
-  };
-
-  setMessages((prev) => [...prev, botMessage]);
-}
+  }
 
   return (
     <div className="chat-input-container">
@@ -67,7 +40,7 @@ function ChatInput({ setMessages }) {
         placeholder="send message"
         size="50"
         value={inputText}
-        onChange={saveTextInput}
+        onChange={saveInputText}
       />
       <button className="send-button" onClick={sendMessage}>
         Send
